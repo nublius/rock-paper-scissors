@@ -18,15 +18,13 @@ function getComputerChoice() {
         computerChoice =  "scissors";
         console.log("Computer plays scissors.");
     }
-
     return computerChoice;
 }
 
 // OBTAIN player's choice
 function getHumanChoice() {
     let humanChoice = prompt("What's your move?");
-    let humanChoiceLower = humanChoice.toLowerCase();
-    return humanChoiceLower;
+    return humanChoice.toLowerCase();
 }
 
     // INITIALIZE scores
@@ -35,30 +33,23 @@ function getHumanChoice() {
 
 // INITIALIZE round
 function playRound(computerChoice, humanChoice) {
-    if (computerChoice === humanChoice) {
-        console.log("Tie!");
-    } else if (computerChoice === "rock" && humanChoice === "paper") {
-        console.log("You win! Paper beats rock.");
-        humanScore++;
-    } else if (computerChoice === "paper" && humanChoice === "rock") {
-        console.log("You lose! Paper beats rock.")
-        computerScore++;
-    } else if (computerChoice === "rock" && humanChoice === "scissors") {
-        console.log("You lose! Rock beats scissors.");
-        computerScore++;
-    } else if (computerChoice === "scissors" && humanChoice === "paper") {
-        console.log("You lose! Scissors beat paper.")
-        computerScore++;
-    } else if (computerChoice === "paper" && humanChoice === "scissors") {
-        console.log("You win! Scissors beat paper.");
-        humanScore++;
-    } else if (computerChoice === "scissors" && humanChoice === "rock") {
-        console.log("You win! Rock beats scissors.")
-        humanScore++;
+
+    const outcomes = {
+        rock: { rock: "tie", scissors: "win", paper: "lose"},
+        paper: { paper: "tie", rock: "win", scissors: "lose"},
+        scissors: { scissors: "tie", paper: "win", rock: "lose"}
+    };
+
+    if (outcomes[humanChoice][computerChoice] === "tie") {
+        console.log("Tie!")
+    } else if (outcomes[humanChoice][computerChoice] === "win") {
+        console.log("You win!")
+    } else {
+        console.log("You lose!")
     }
 }
 
-
+/*
 // PLAY 5 rounds
 function playGame() {
     // INITIALIZE scores
@@ -80,3 +71,4 @@ function playGame() {
         console.log("You lose!");
     }
 }
+*/
