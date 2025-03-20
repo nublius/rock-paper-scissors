@@ -49,7 +49,7 @@ function playRound(computerChoice, humanChoice) {
     }
 }
 
-const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll("button.play");
 
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
