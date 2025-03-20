@@ -49,6 +49,14 @@ function playRound(computerChoice, humanChoice) {
     }
 }
 
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        playRound(getComputerChoice(), button.id);
+    })
+})
+
 /*
 // PLAY 5 rounds
 function playGame() {
