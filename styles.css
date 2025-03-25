@@ -1,3 +1,7 @@
+html, body {
+    height: 100%;
+}
+
 * {
     padding: 0px;
     margin: 0px;
@@ -19,12 +23,63 @@ body {
 
 .container {
     background-color: rgba(0, 0, 0, 0.6);
-    justify-content: center;
     margin: 40px;
     border: 3px solid lightgray;
     flex-direction: column;
+    height: 90%;
 }
 
 button {
-    border: 3px dotted grey;
+    border: 4px dotted grey;
+}
+
+button:hover {
+    border: 4px solid white;
+}
+
+button:active {
+    border: 4px solid orange;
+}
+
+.top-header {
+    align-items: flex-start;
+    border: 4px solid white;
+}
+
+.title-header {
+    color: white;
+}
+
+.game-container {
+    padding-top: 200px;
+    flex-direction: column;
+}
+
+.versus-container {
+    justify-content: space-evenly;
+    align-items: space-between;
+}
+
+.versus {
+    color: white;
+    font-size: 100px;
+    align-self: center;
+}
+
+.round {
+    height: 300px;
+    width: 300px;
+    border: 4px solid white;
+}
+
+.button-container {
+    padding-top: 150px;
+    justify-content: center;
+}
+
+.player {
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 40px;
 }

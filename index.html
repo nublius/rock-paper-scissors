@@ -12,10 +12,23 @@
             <header class="top-header flex">
                 <h1 class="title-header">https://rockpaperscissors.com/play</h1>
             </header>
-            <div class="button-container flex">
-                <button id="rock" class="play"><img src="images/rock.jpeg"></button>
-                <button id="paper" class="play"><img src="images/paper.jpeg"></button>
-                <button id="scissors" class="play"><img src="images/scissors.jpeg"></button>
+            <div class="game-container flex">
+                <section class="versus-container flex">
+                    <div class="player-container">
+                        <h1 class="player">PLAYER</h1>
+                        <div class="round"></div>
+                    </div>
+                    <h1 class="versus">VS</h1>
+                    <div class="computer-container">
+                        <h1 class="player">COMPUTER</h1>
+                        <div class="round"></div>
+                    </div>
+                </section>
+                <div class="button-container flex">
+                    <button id="rock" class="play"><img src="images/rock.jpeg"></button>
+                    <button id="paper" class="play"><img src="images/paper.jpeg"></button>
+                    <button id="scissors" class="play"><img src="images/scissors.jpeg"></button>
+                </div>
             </div>
         </div>
         <script src="script.js"></script>  
