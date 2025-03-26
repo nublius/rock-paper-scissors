@@ -27,13 +27,20 @@ function getPlayerChoice() {
     return playerChoice.toLowerCase();
 }
 
-// DISPLAY player and computer choices when round is played
-function addImg(computerChoice, playerChoice) {
-    const playerContainer = document.getElementById("round-player");
-    const computerContainer = document.getElementById("round-computer");
+// GLOBAL variables for player and computer choices
+const playerContainer = document.getElementById("round-player");
+const computerContainer = document.getElementById("round-computer");
 
+// REMOVE previous player and computer choices when a round is played
+function removeImg() {
     if (playerContainer.firstChild) {playerContainer.removeChild(playerContainer.firstChild);}
     if (computerContainer.firstChild) {computerContainer.removeChild(computerContainer.firstChild);}
+}
+
+// DISPLAY player and computer choices when round is played
+function addImg(computerChoice, playerChoice) {
+
+    removeImg();
 
     const playerElem = document.createElement("img");
     
@@ -80,19 +87,19 @@ buttons.forEach((button) => {
 // PLAY 5 rounds
 function playGame() {
     // INITIALIZE scores
-    humanScore = 0;
+    playerScore = 0;
     computerScore = 0;
 
     for (let i = 0; i < 5; i++) {
-        let humanResult = getplayerChoice();
+        let playerResult = getplayerChoice();
         let computerResult = getComputerChoice();
 
-        playRound(computerResult, humanResult);
+        playRound(computerResult, playerResult);
     }
 
-    if (humanScore > computerScore) {
+    if (playerScore > computerScore) {
         console.log("You win!");
-    } else if (humanScore === computerScore) {
+    } else if (playerScore === computerScore) {
         console.log("It's a tie!");
     } else {
         console.log("You lose!");
