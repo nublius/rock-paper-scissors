@@ -46,10 +46,6 @@ function addImg(computerChoice, humanChoice) {
     computerContainer.appendChild(computerElem);
 }
 
-    // INITIALIZE scores
-    let humanScore = 0;
-    let computerScore = 0;
-
 // INITIALIZE round
 function playRound(computerChoice, humanChoice) {
 
