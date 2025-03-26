@@ -28,21 +28,22 @@ function getHumanChoice() {
 }
 
 function addImg(computerChoice, humanChoice) {
+    const playerContainer = document.getElementById("round-player");
+    const computerContainer = document.getElementById("round-computer");
+
+    if (playerContainer.firstChild) {playerContainer.removeChild(playerContainer.firstChild);}
+    if (computerContainer.firstChild) {computerContainer.removeChild(computerContainer.firstChild);}
+
     const playerElem = document.createElement("img");
+    
     playerElem.setAttribute("src", "images/${humanChoice}-big.jpeg");
     playerElem.setAttribute("src", `images/${humanChoice}-big.jpeg`);
-    document.getElementById("round-player").appendChild(playerElem);
-
+    playerContainer.appendChild(playerElem);
 
     const computerElem = document.createElement("img");
     computerElem.setAttribute("src", "images/${computerChoice}-big.jpeg");
     computerElem.setAttribute("src", `images/${computerChoice}-big.jpeg`);
-    document.getElementById("round-computer").appendChild(computerElem);
-}
-
-function removeImg() {
-    document.getElementById("round-player").removeChild(document.getElementById("round-player").firstChild);
-    document.getElementById("round-computer").removeChild(document.getElementById("round-computer").firstChild);
+    computerContainer.appendChild(computerElem);
 }
 
     // INITIALIZE scores
@@ -51,8 +52,6 @@ function removeImg() {
 
 // INITIALIZE round
 function playRound(computerChoice, humanChoice) {
-
-    removeImg();
 
     addImg(computerChoice, humanChoice);
 

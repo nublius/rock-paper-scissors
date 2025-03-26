@@ -69,7 +69,8 @@ button:active {
 #round-player, #round-computer {
     height: 300px;
     width: 300px;
-    border: 4px solid white;
+    border: 4px dotted white;
+    box-sizing: content-box;
 }
 
 .button-container {
