@@ -27,12 +27,34 @@ function getHumanChoice() {
     return humanChoice.toLowerCase();
 }
 
+function addImg(computerChoice, humanChoice) {
+    const playerElem = document.createElement("img");
+    playerElem.setAttribute("src", "images/${humanChoice}-big.jpeg");
+    playerElem.setAttribute("src", `images/${humanChoice}-big.jpeg`);
+    document.getElementById("round-player").appendChild(playerElem);
+
+
+    const computerElem = document.createElement("img");
+    computerElem.setAttribute("src", "images/${computerChoice}-big.jpeg");
+    computerElem.setAttribute("src", `images/${computerChoice}-big.jpeg`);
+    document.getElementById("round-computer").appendChild(computerElem);
+}
+
+function removeImg() {
+    document.getElementById("round-player").removeChild(document.getElementById("round-player").firstChild);
+    document.getElementById("round-computer").removeChild(document.getElementById("round-computer").firstChild);
+}
+
     // INITIALIZE scores
     let humanScore = 0;
     let computerScore = 0;
 
 // INITIALIZE round
 function playRound(computerChoice, humanChoice) {
+
+    removeImg();
+
+    addImg(computerChoice, humanChoice);
 
     const outcomes = {
         rock: { rock: "tie", scissors: "win", paper: "lose"},
@@ -47,6 +69,8 @@ function playRound(computerChoice, humanChoice) {
     } else {
         console.log("You lose!")
     }
+
+    
 }
 
 const buttons = document.querySelectorAll("button.play");
