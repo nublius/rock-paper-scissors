@@ -22,12 +22,13 @@ function getComputerChoice() {
 }
 
 // OBTAIN player's choice
-function getHumanChoice() {
-    let humanChoice = prompt("What's your move?");
-    return humanChoice.toLowerCase();
+function getPlayerChoice() {
+    let playerChoice = prompt("What's your move?");
+    return playerChoice.toLowerCase();
 }
 
-function addImg(computerChoice, humanChoice) {
+// DISPLAY player and computer choices when round is played
+function addImg(computerChoice, playerChoice) {
     const playerContainer = document.getElementById("round-player");
     const computerContainer = document.getElementById("round-computer");
 
@@ -36,8 +37,8 @@ function addImg(computerChoice, humanChoice) {
 
     const playerElem = document.createElement("img");
     
-    playerElem.setAttribute("src", "images/${humanChoice}-big.jpeg");
-    playerElem.setAttribute("src", `images/${humanChoice}-big.jpeg`);
+    playerElem.setAttribute("src", "images/${playerChoice}-big.jpeg");
+    playerElem.setAttribute("src", `images/${playerChoice}-big.jpeg`);
     playerContainer.appendChild(playerElem);
 
     const computerElem = document.createElement("img");
@@ -47,9 +48,9 @@ function addImg(computerChoice, humanChoice) {
 }
 
 // INITIALIZE round
-function playRound(computerChoice, humanChoice) {
+function playRound(computerChoice, playerChoice) {
 
-    addImg(computerChoice, humanChoice);
+    addImg(computerChoice, playerChoice);
 
     const outcomes = {
         rock: { rock: "tie", scissors: "win", paper: "lose"},
@@ -57,15 +58,14 @@ function playRound(computerChoice, humanChoice) {
         scissors: { scissors: "tie", paper: "win", rock: "lose"}
     };
 
-    if (outcomes[humanChoice][computerChoice] === "tie") {
+    if (outcomes[playerChoice][computerChoice] === "tie") {
         console.log("Tie!")
-    } else if (outcomes[humanChoice][computerChoice] === "win") {
+    } else if (outcomes[playerChoice][computerChoice] === "win") {
         console.log("You win!")
     } else {
         console.log("You lose!")
     }
 
-    
 }
 
 const buttons = document.querySelectorAll("button.play");
@@ -84,7 +84,7 @@ function playGame() {
     computerScore = 0;
 
     for (let i = 0; i < 5; i++) {
-        let humanResult = getHumanChoice();
+        let humanResult = getplayerChoice();
         let computerResult = getComputerChoice();
 
         playRound(computerResult, humanResult);
