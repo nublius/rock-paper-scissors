@@ -27,7 +27,7 @@ function getPlayerChoice() {
     return playerChoice.toLowerCase();
 }
 
-// GLOBAL variables for player and computer choices
+// INITIALIZE global variables for player and computer choices
 const playerContainer = document.getElementById("round-player");
 const computerContainer = document.getElementById("round-computer");
 
@@ -44,14 +44,15 @@ function addImg(computerChoice, playerChoice) {
 
     const playerElem = document.createElement("img");
     
-    playerElem.setAttribute("src", "images/${playerChoice}-big.jpeg");
     playerElem.setAttribute("src", `images/${playerChoice}-big.jpeg`);
     playerContainer.appendChild(playerElem);
 
     const computerElem = document.createElement("img");
-    computerElem.setAttribute("src", "images/${computerChoice}-big.jpeg");
     computerElem.setAttribute("src", `images/${computerChoice}-big.jpeg`);
     computerContainer.appendChild(computerElem);
+
+    playerElem.classList.add("bigImg");
+    computerElem.classList.add("bigImg");
 }
 
 // INITIALIZE round
@@ -67,10 +68,18 @@ function playRound(computerChoice, playerChoice) {
 
     if (outcomes[playerChoice][computerChoice] === "tie") {
         console.log("Tie!")
+        playerContainer.style.border = "4px dotted white";
+        computerContainer.style.border ="4px dotted white";
+
     } else if (outcomes[playerChoice][computerChoice] === "win") {
         console.log("You win!")
+        playerContainer.style.border = "8px double orange";
+        computerContainer.style.border ="4px dotted white";
+
     } else {
         console.log("You lose!")
+        playerContainer.style.border = "4px dotted white";
+        computerContainer.style.border ="8px double orange";
     }
 
 }
