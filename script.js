@@ -68,11 +68,13 @@ function playRound(computerChoice, playerChoice) {
 
     if (outcomes[playerChoice][computerChoice] === "tie") {
         console.log("Tie!")
+        playerScore++;
         playerContainer.style.border = "4px solid orange";
         computerContainer.style.border ="4px solid orange";
 
     } else if (outcomes[playerChoice][computerChoice] === "win") {
         console.log("You win!")
+        computerScore++;
         playerContainer.style.border = "4px solid orange";
         computerContainer.style.border ="4px solid red";
 
@@ -99,38 +101,46 @@ function playGame() {
 
     removeImg();
 
-    playButton.style.visibility = "hidden";
-
     // INITIALIZE scores
     playerScore = 0;
     computerScore = 0;
-    let gameRound = 0;
+    let gameRound = 1;
 
     const gameHeader = document.querySelector(".game-header");
     const playerHeader = document.querySelector(".player");
     const computerHeader = document.querySelector(".computer");
-    do {
-        if (gameRound === 5) {
-            if (playerScore > computerScore) {
-                console.log("You win!");
-            } else if (playerScore === computerScore) {
-                console.log("It's a tie!");
-            } else {
-                console.log("You lose!");
+
+    playerHeader.textContent = "PLAYER";
+    computerHeader.textContent = "COMPUTER";
+
+    playButton.style.visibility = "hidden";
+    gameHeader.textContent = `ROUND ${gameRound}`;
+
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            if (gameRound === 5) {
+                if (playerScore > computerScore) {
+                    console.log("You win!");
+                    gameHeader.textContent = "YOU WIN!";
+                } else if (playerScore === computerScore) {
+                    console.log("It's a tie!");
+                    gameHeader.textContent = "TIE!";
+                } else {
+                    console.log("You lose!");
+                    gameHeader.textContent = "YOU LOSE!";
+                }
+                // RESET attributes and variables for new game
+                playButton.style.visibility = "visible";
+                playerContainer.style.border = "4px solid orange";
+                computerContainer.style.border ="4px solid orange";
+                gameRound = 1;
+                return;
             }
-            gameround = 0;
-            break;
-        } else {
+            playRound(getComputerChoice(), button.id);
             gameRound++;
             gameHeader.textContent = `ROUND ${gameRound}`;
             playerHeader.textContent = `PLAYER: ${playerScore}`;
             computerHeader.textContent = `COMPUTER: ${computerScore}`;
-            
-            buttons.forEach((button) => {
-                button.addEventListener("click", () => {
-                    playRound(getComputerChoice(), button.id);
-                });
-            });
-        }  
-    } while ( gameRound != 5);
-}
+        });
+    });
+}  
