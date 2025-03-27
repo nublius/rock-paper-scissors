@@ -44,11 +44,11 @@ function addImg(computerChoice, playerChoice) {
 
     const playerElem = document.createElement("img");
     
-    playerElem.setAttribute("src", `images/${playerChoice}-big.jpeg`);
+    playerElem.setAttribute("src", `images/${playerChoice}-big.jpg`);
     playerContainer.appendChild(playerElem);
 
     const computerElem = document.createElement("img");
-    computerElem.setAttribute("src", `images/${computerChoice}-big.jpeg`);
+    computerElem.setAttribute("src", `images/${computerChoice}-big.jpg`);
     computerContainer.appendChild(computerElem);
 
     playerElem.classList.add("bigImg");
@@ -68,50 +68,69 @@ function playRound(computerChoice, playerChoice) {
 
     if (outcomes[playerChoice][computerChoice] === "tie") {
         console.log("Tie!")
-        playerContainer.style.border = "4px dotted white";
-        computerContainer.style.border ="4px dotted white";
+        playerContainer.style.border = "4px solid orange";
+        computerContainer.style.border ="4px solid orange";
 
     } else if (outcomes[playerChoice][computerChoice] === "win") {
         console.log("You win!")
-        playerContainer.style.border = "8px double orange";
-        computerContainer.style.border ="4px dotted white";
+        playerContainer.style.border = "4px solid orange";
+        computerContainer.style.border ="4px solid red";
 
     } else {
         console.log("You lose!")
-        playerContainer.style.border = "4px dotted white";
-        computerContainer.style.border ="8px double orange";
+        playerContainer.style.border = "4px solid red";
+        computerContainer.style.border ="4px solid orange";
     }
 
 }
 
 const buttons = document.querySelectorAll("button.play");
+const playButton = document.getElementById("play-button");
 
-buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-        playRound(getComputerChoice(), button.id);
-    })
-})
+// DEFINE scores and rounds
+let playerScore = 0;
+let computerScore = 0;
+let gameRound = 0;
 
-/*
+playButton.addEventListener("click", playGame);
+
 // PLAY 5 rounds
 function playGame() {
+
+    removeImg();
+
+    playButton.style.visibility = "hidden";
+
     // INITIALIZE scores
     playerScore = 0;
     computerScore = 0;
+    let gameRound = 0;
 
-    for (let i = 0; i < 5; i++) {
-        let playerResult = getplayerChoice();
-        let computerResult = getComputerChoice();
-
-        playRound(computerResult, playerResult);
-    }
-
-    if (playerScore > computerScore) {
-        console.log("You win!");
-    } else if (playerScore === computerScore) {
-        console.log("It's a tie!");
-    } else {
-        console.log("You lose!");
-    }
+    const gameHeader = document.querySelector(".game-header");
+    const playerHeader = document.querySelector(".player");
+    const computerHeader = document.querySelector(".computer");
+    do {
+        if (gameRound === 5) {
+            if (playerScore > computerScore) {
+                console.log("You win!");
+            } else if (playerScore === computerScore) {
+                console.log("It's a tie!");
+            } else {
+                console.log("You lose!");
+            }
+            gameround = 0;
+            break;
+        } else {
+            gameRound++;
+            gameHeader.textContent = `ROUND ${gameRound}`;
+            playerHeader.textContent = `PLAYER: ${playerScore}`;
+            computerHeader.textContent = `COMPUTER: ${computerScore}`;
+            
+            buttons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    playRound(getComputerChoice(), button.id);
+                });
+            });
+        }  
+    } while ( gameRound != 5);
 }
-*/

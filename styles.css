@@ -1,10 +1,10 @@
 @font-face {
-    font-family: Rocabe; src: url('RocabeTrialRegular-OGMep.ttf');
+    font-family: pressstart2p; src: url('pressstart2p.ttf');
 }
 
 html, body {
     height: 100%;
-    font-family: Rocabe;
+    font-family: pressstart2p;
 }
 
 * {
@@ -31,19 +31,23 @@ body {
     margin: 40px;
     border: 3px solid lightgray;
     flex-direction: column;
-    height: 90%;
+    height: 100%;
 }
 
 button {
-    border: 4px dotted grey;
+    border: 4px solid orange;
+    cursor: pointer;
+    background: inherit;
+    width: 150px;
+    height: 150px;
 }
 
 button:hover {
-    border: 4px solid white;
+    border: 4px solid orangered;
 }
 
 button:active {
-    border: 4px solid orange;
+    border: 4px solid black;
 }
 
 .top-header {
@@ -54,21 +58,37 @@ button:active {
 
 .title-header {
     color: white;
+    font-size: 20px;;
 }
 
 .game-header-container {
-    justify-content: center;
-    padding-bottom: 100px;
+    align-items: center;
+    flex-direction: column;
 }
 
 .game-header {
-    font-size: 70px;
-    color: white;
-    text-shadow: 4px 4px 6px #ff7c02e8;
+    font-size: 50px;
+    color: orange;
+    text-shadow: 4px 4px 6px black;
+}
+
+#play-button {
+    color: orange;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    font-family: pressstart2p;
+    font-size: 20px;
+    text-shadow: 2px 2px 4px black;
+}
+#play-button:hover {
+    border: none;
+    color: orangered;
+    text-shadow: 2px 2px 4px black;
 }
 
 .game-container {
-    padding-top: 100px;
+    padding-top: 70px;
     flex-direction: column;
 }
 
@@ -78,32 +98,37 @@ button:active {
 }
 
 .versus {
-    color: white;
+    color: orange;
     font-size: 100px;
     align-self: center;
-    text-shadow: 4px 4px 6px #ff7c02e8;
+    text-shadow: 4px 4px 6px black;
 }
 
 #round-player, #round-computer {
     height: 300px;
     width: 300px;
-    border: 4px dotted white;
+    border: 4px solid orange;
 }
 
 .button-container {
-    padding-top: 150px;
+    padding-top: 20px;
     justify-content: center;
 }
 
-.player {
-    color: white;
-    text-shadow: 4px 4px 6px #ff7c02e8;
+.player, .computer {
+    color: orange;
+    text-shadow: 4px 4px 6px black;
     text-align: center;
     padding: 10px;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .bigImg {
+    object-fit: contain;
+    width: 100%;
+}
+
+.img-button {
     object-fit: contain;
     width: 100%;
 }
